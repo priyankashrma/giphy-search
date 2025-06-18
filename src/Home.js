@@ -65,11 +65,12 @@ export default function Home() {
     if (gridRef.current) {
       const outerRef = gridRef.current._outerRef;
       const targetScrollTop = previousRows * rowHeightRef.current;
-
-      outerRef.scrollTo({
-        top: targetScrollTop,
-        behavior: "smooth",
-      });
+      setTimeout(() => {
+        outerRef.scrollTo({
+          top: targetScrollTop,
+          behavior: "smooth",
+        });
+      }, 100);
     }
   };
 

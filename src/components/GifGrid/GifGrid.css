@@ -1,5 +1,6 @@
 .gif-grid-container {
-  height: calc(100vh - 80px);
+  height: calc(100vh - 124px);
+  overflow: auto;
 }
 .gif-item {
   padding: 4px;

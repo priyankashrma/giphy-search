@@ -36,8 +36,8 @@ export default function GifGrid({
           const columnCount = Math.max(1, Math.floor(width / minItemWidth));
           columnCountRef.current = columnCount;
 
-          const columnWidth = width / columnCount;
-          const rowHeight = columnWidth * itemHeightRatio;
+          const columnWidth = Math.floor(width / columnCount);
+          const rowHeight = Math.floor(columnWidth * itemHeightRatio);
           rowHeightRef.current = rowHeight;
 
           const rowCount = Math.ceil(gifs.length / columnCount);
