@@ -1,0 +1,13 @@
+.home-container {
+  width: 80%;
+  max-width: 900px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: radial-gradient(circle at center, #121212 0%, #000000 100%);
+  color: #fff;
+}

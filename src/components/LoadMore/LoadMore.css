@@ -1,0 +1,17 @@
+.load-more-button {
+  margin-top: 24px;
+  padding: 14px 32px;
+  font-size: 18px;
+  border-radius: 6px;
+  background: linear-gradient(45deg, #00cc99, #009977);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s, transform 0.2s;
+}
+
+.load-more-button:hover {
+  background: linear-gradient(45deg, #009977, #007755);
+  transform: scale(1.05);
+}
