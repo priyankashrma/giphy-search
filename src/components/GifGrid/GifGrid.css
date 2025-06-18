@@ -1,18 +1,15 @@
-.gif-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 16px;
-  margin-top: 20px;
+.gif-grid-container {
+  height: calc(100vh - 80px);
 }
-
 .gif-item {
-  overflow: hidden;
-  border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 4px;
+  box-sizing: border-box;
 }
 
 .gif-image {
   width: 100%;
-  display: block;
+  height: 100%;
+  object-fit: cover;
   border-radius: 6px;
+  display: block;
 }

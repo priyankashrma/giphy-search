@@ -36,7 +36,7 @@ function Search({ query, setQuery, onSearch, apiKey }) {
     setQuery(value);
 
     if (value.trim() === "") {
-      onSearch(""); // trigger trending on clear
+      onSearch("");
     }
   };
 

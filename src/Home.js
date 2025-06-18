@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Home.css";
 import Search from "./components/Search/Search";
 import GifGrid from "./components/GifGrid/GifGrid";
@@ -11,6 +11,10 @@ export default function Home() {
   const [gifs, setGifs] = useState([]);
   const [offset, setOffset] = useState(0);
   const [currentTerm, setCurrentTerm] = useState("");
+
+  const gridRef = useRef(null);
+  const columnCountRef = useRef(3);
+  const rowHeightRef = useRef(200);
 
   useEffect(() => {
     fetchTrending();
@@ -49,24 +53,47 @@ export default function Home() {
     }
   };
 
-  const loadMore = () => {
+  const loadMore = async () => {
+    const previousRows = Math.ceil(gifs.length / columnCountRef.current);
+
     if (!currentTerm) {
-      fetchTrending(true);
+      await fetchTrending(true);
     } else {
-      fetchSearch(currentTerm, true);
+      await fetchSearch(currentTerm, true);
+    }
+
+    if (gridRef.current) {
+      const outerRef = gridRef.current._outerRef;
+      const targetScrollTop = previousRows * rowHeightRef.current;
+
+      outerRef.scrollTo({
+        top: targetScrollTop,
+        behavior: "smooth",
+      });
     }
   };
 
   return (
     <div className="home-container">
-      <Search
-        query={query}
-        setQuery={setQuery}
-        onSearch={handleSearch}
-        apiKey={API_KEY}
+      <div className="search-fixed">
+        <Search
+          query={query}
+          setQuery={setQuery}
+          onSearch={handleSearch}
+          apiKey={API_KEY}
+        />
+      </div>
+
+      <GifGrid
+        gifs={gifs}
+        gridRef={gridRef}
+        columnCountRef={columnCountRef}
+        rowHeightRef={rowHeightRef}
       />
-      <GifGrid gifs={gifs} />
-      <LoadMore onClick={loadMore} />
+
+      <div className="load-more-fixed">
+        <LoadMore onClick={loadMore} />
+      </div>
     </div>
   );
 }

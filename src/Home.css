@@ -10,4 +10,16 @@ body {
   font-family: sans-serif;
   background: radial-gradient(circle at center, #121212 0%, #000000 100%);
   color: #fff;
+  overflow: hidden;
+}
+
+.load-more-fixed {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.005);
+  z-index: 1000;
 }
